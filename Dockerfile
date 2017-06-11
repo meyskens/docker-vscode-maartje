@@ -2,7 +2,7 @@ FROM meyskens/vscode:latest
 
 #Add some personal stuff
 
-RUN apt-get install build-essential
+RUN apt-get install -y build-essential
 
 # Add the fish shell
 RUN apt-get install -y wget
