@@ -2,6 +2,8 @@ FROM meyskens/vscode:latest
 
 #Add some personal stuff
 
+RUN apt-get install build-essential
+
 # Add the fish shell
 RUN apt-get install -y wget
 RUN wget -nv http://download.opensuse.org/repositories/shells:fish:release:2/Debian_8.0/Release.key -O Release.key &&\
@@ -21,3 +23,7 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - &&\
 #Install hugo
 RUN wget https://github.com/spf13/hugo/releases/download/v0.21/hugo_0.21_Linux-64bit.deb &&\
     dpkg -i hugo_0.21_Linux-64bit.deb && rm -f /hugo_0.21_Linux-64bit.deb 
+
+#Install Travis CLI
+RUN apt-get install -y ruby ruby-dev && \
+    gem install travis -v 1.8.8 --no-rdoc --no-ri
