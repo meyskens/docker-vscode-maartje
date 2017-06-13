@@ -16,6 +16,9 @@ RUN wget -nv http://download.opensuse.org/repositories/shells:fish:release:2/Deb
 RUN wget https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz &&\
     tar -C /usr/local -xzf go* && rm -f go*
 
+ENV GOPATH /home/user/go
+ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+
 #Install node.js
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - &&\
     apt-get install -y nodejs
