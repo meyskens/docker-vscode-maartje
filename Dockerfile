@@ -15,7 +15,7 @@ RUN wget -nv http://download.opensuse.org/repositories/shells:fish:release:2/Deb
 #Install golang
 RUN echo "deb http://ppa.launchpad.net/longsleep/golang-backports/ubuntu xenial main" >>/etc/apt/sources.list && \
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 52B59B1571A79DBC054901C0F6BC817356A3D45E  && \
-    apt-get update && apt-get install golang-1.8
+    apt-get update && apt-get install -y golang-1.8
 
 ENV GOPATH /home/user/go
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
