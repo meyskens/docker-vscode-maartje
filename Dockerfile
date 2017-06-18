@@ -24,6 +24,7 @@ ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 #Install node.js
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - &&\
     apt-get install -y nodejs
+RUN npm install -g eslint
 
 #Install hugo
 RUN wget https://github.com/spf13/hugo/releases/download/v0.21/hugo_0.21_Linux-64bit.deb &&\
