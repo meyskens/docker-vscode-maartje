@@ -33,3 +33,6 @@ RUN wget https://github.com/spf13/hugo/releases/download/v0.21/hugo_0.21_Linux-6
 #Install Travis CLI
 RUN apt-get install -y ruby ruby-dev && \
     gem install travis -v 1.8.8 --no-rdoc --no-ri
+
+#Install PHP
+RUN apt-get -y install php7.0
