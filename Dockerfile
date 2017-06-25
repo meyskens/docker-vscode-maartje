@@ -22,7 +22,7 @@ ENV GOPATH /home/user/go
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 
 #Install node.js
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - &&\
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - &&\
     apt-get install -y nodejs
 RUN npm install -g eslint babel-eslint
 
