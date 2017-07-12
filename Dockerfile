@@ -49,3 +49,6 @@ RUN apt-get -y install httpie
 RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list &&\
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - &&\
     apt-get update && apt-get install -y google-cloud-sdk google-cloud-sdk-app-engine-go
+
+#Install Docker, what??? Why are you looking that way at me?
+RUN curl https://get.docker.com | bash
