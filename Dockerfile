@@ -26,6 +26,9 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - &&\
     apt-get install -y nodejs
 RUN npm install -g eslint babel-eslint
 
+#Install ionic
+RUN npm install -g cordova ionic
+
 #Install hugo
 RUN wget https://github.com/spf13/hugo/releases/download/v0.21/hugo_0.21_Linux-64bit.deb &&\
     dpkg -i hugo_0.21_Linux-64bit.deb && rm -f /hugo_0.21_Linux-64bit.deb 
