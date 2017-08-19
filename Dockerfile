@@ -55,6 +55,7 @@ RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s
 
 #Install Docker, what??? Why are you looking that way at me?
 RUN curl https://get.docker.com | bash
+RUN apt-get -y install docker-compose
 
 #Install Dep
 RUN go get -u github.com/golang/dep/cmd/dep
