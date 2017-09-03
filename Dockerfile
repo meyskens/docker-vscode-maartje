@@ -13,12 +13,12 @@ RUN wget -nv http://download.opensuse.org/repositories/shells:fish:release:2/Deb
     chsh -s /usr/bin/fish user 
 
 #Install golang
-RUN echo "deb http://ppa.launchpad.net/longsleep/golang-backports/ubuntu xenial main" >>/etc/apt/sources.list && \
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 52B59B1571A79DBC054901C0F6BC817356A3D45E  && \
-    apt-get update && apt-get install -y golang-1.8 && \
-    ln -s /usr/lib/go-1.8/bin/* /usr/bin/
+RUN apt-get update && apt-get install -y wget tar git
+RUN wget -O -  "https://golang.org/dl/go1.9.linux-amd64.tar.gz" | tar xzC /usr/local
+RUN cp /usr/local/go/bin/* /usr/local/bin
 
 ENV GOPATH /home/user/go
+ENV GOROOT /usr/local/go
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 
 #Install node.js
