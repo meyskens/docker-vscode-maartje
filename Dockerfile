@@ -24,7 +24,7 @@ ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 #Install node.js
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - &&\
     apt-get install -y nodejs
-RUN npm install -g eslint babel-eslint http-server babel-cli webpack nodemon
+RUN npm install -g eslint babel-eslint http-server babel-cli webpack nodemon angular
 
 #Install ionic
 RUN npm install -g cordova ionic
