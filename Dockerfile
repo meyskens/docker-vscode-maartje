@@ -9,7 +9,7 @@ RUN apt-get install -y build-essential
 
 # Add the fish shell
 RUN apt-get install -y fish
-RUN sudo -u user chsh -s /usr/bin/fish
+RUN usermod -s /usr/bin/fish user
 
 #Install golang
 RUN apt-get update && apt-get install -y wget tar git
