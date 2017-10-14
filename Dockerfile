@@ -9,6 +9,8 @@ RUN apt-get install -y build-essential
 
 # Add the fish shell
 RUN apt-get install -y fish
+RUN sudo -u user chsh -s /usr/bin/fish
+
 #Install golang
 RUN apt-get update && apt-get install -y wget tar git
 RUN wget -O -  "https://golang.org/dl/go1.9.linux-amd64.tar.gz" | tar xzC /usr/local
