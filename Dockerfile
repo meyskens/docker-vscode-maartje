@@ -1,17 +1,14 @@
 FROM meyskens/vscode:latest
 
+RUN apt-get update
+RUN apt-get install sudo
+
 #Add some personal stuff
 
 RUN apt-get install -y build-essential
 
 # Add the fish shell
-RUN apt-get install -y wget
-RUN wget -nv http://download.opensuse.org/repositories/shells:fish:release:2/Debian_8.0/Release.key -O Release.key &&\
-    apt-key add - < Release.key &&\
-    apt-get update &&\
-    apt-get install -y fish &&\
-    chsh -s /usr/bin/fish user 
-
+RUN apt-get install -y fish
 #Install golang
 RUN apt-get update && apt-get install -y wget tar git
 RUN wget -O -  "https://golang.org/dl/go1.9.linux-amd64.tar.gz" | tar xzC /usr/local
@@ -24,7 +21,7 @@ ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 #Install node.js
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - &&\
     apt-get install -y nodejs
-RUN npm install -g eslint babel-eslint http-server babel-cli webpack nodemon @angular/cli
+RUN sudo npm install -g eslint babel-eslint http-server babel-cli webpack nodemon
 
 #Install ionic
 RUN npm install -g cordova ionic
@@ -38,12 +35,12 @@ RUN apt-get install -y ruby ruby-dev && \
     gem install travis -v 1.8.8 --no-rdoc --no-ri
 
 #Install PHP
-#RUN apt-get -y install php7.0 php-7.0-curl php-7.0-mbstring
-#RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&\
-#    php -r "if (hash_file('SHA384', 'composer-setup.php') === '669656bab3166a7aff8a7506b8cb2d1c292f042046c5a994c43155c0be6190fa0355160742ab2e1c88d40d5be660b410') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"  &&\
-#    php composer-setup.  &&\
-#    php -r "unlink('composer-setup.php');"  &&\
-#    mv composer.phar /usr/local/bin/composer
+RUN apt-get -y install php7.0 php7.0-curl php7.0-mbstring
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&\
+    php -r "if (hash_file('SHA384', 'composer-setup.php') === '669656bab3166a7aff8a7506b8cb2d1c292f042046c5a994c43155c0be6190fa0355160742ab2e1c88d40d5be660b410') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"  &&\
+    php composer-setup.  &&\
+    php -r "unlink('composer-setup.php');"  &&\
+    mv composer.phar /usr/local/bin/composer
 
 #Install httpie
 RUN apt-get -y install httpie
