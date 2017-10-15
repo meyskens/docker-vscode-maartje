@@ -58,3 +58,18 @@ RUN go get -u github.com/golang/dep/cmd/dep
 RUN add-apt-repository -y "deb https://cli-assets.heroku.com/branches/stable/apt ./" &&\
     curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add - &&\
     apt-get update && apt-get install -y heroku 
+
+
+# Install ino
+RUN apt-get update &&\
+    apt-get install -y \
+    python \
+    python-dev \
+    python-pip \
+    python-setuptools \
+    python-wheel \
+    picocom \
+    arduino \
+    --no-install-recommends
+
+RUN pip install ino
