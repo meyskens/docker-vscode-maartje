@@ -76,4 +76,8 @@ RUN wget -O arduino.tar.xz https://downloads.arduino.cc/arduino-${arduinoversion
 
 RUN mv arduino-${arduinoversion} /usr/local/share/arduino/ && /usr/local/share/arduino/install.sh
 
-RUN pip install ino
+RUN cd /tmp && \
+  git clone git://github.com/amperka/ino.git && \
+  cd ino && \
+  cat requirements.txt | xargs pip install &&\
+  make install && rm -fr /tmp/ino
