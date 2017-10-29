@@ -19,6 +19,7 @@ RUN cp /usr/local/go/bin/* /usr/local/bin
 ENV GOPATH /home/user/go
 ENV GOROOT /usr/local/go
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+ENV arduinoversion=1.8.5
 
 #Install node.js
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - &&\
@@ -69,7 +70,10 @@ RUN apt-get update &&\
     python-setuptools \
     python-wheel \
     picocom \
-    arduino \
     --no-install-recommends
+
+RUN wget -O arduino.tar.xz https://downloads.arduino.cc/arduino-${arduinoversion}-linux64.tar.xz  tar -xJf arduino.tar.xz && rm -f arduino.tar.xz
+
+RUN mv arduino-${version} /usr/local/share/arduino/ && /usr/local/share/arduino/install.sh
 
 RUN pip install ino
