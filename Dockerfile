@@ -63,6 +63,6 @@ RUN add-apt-repository -y "deb https://cli-assets.heroku.com/branches/stable/apt
 
 # Install arduino cli
 
-RUN wget -O arduino.tar.xz https://downloads.arduino.cc/arduino-${arduinoversion}-linux64.tar.xz  tar -xJf arduino.tar.xz && rm -f arduino.tar.xz
+RUN wget -O arduino.tar.xz https://downloads.arduino.cc/arduino-${arduinoversion}-linux64.tar.xz && tar -xJf arduino.tar.xz && rm -f arduino.tar.xz
 
 RUN mv arduino-${arduinoversion} /usr/local/share/arduino/ && /usr/local/share/arduino/install.sh && ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino 
