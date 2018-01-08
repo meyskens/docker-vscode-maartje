@@ -1,7 +1,20 @@
-FROM meyskens/vscode:latest
+FROM meyskens/desktop-base:gtkdev
 
-RUN apt-get update
-RUN apt-get install sudo
+RUN apt-get update && apt-get install -y \
+        curl \
+	apt-transport-https \
+	gpg \
+	git \
+    sudo
+
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg &&\
+    mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg &&\
+    echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list
+
+RUN apt-get update && apt-get install -y code
+
+# Install GUI dev
+RUN apt-get install -y pkg-config libwebkit2gtk-4.0-dev libgtk-3-dev
 
 #Add some personal stuff
 
@@ -62,7 +75,9 @@ RUN add-apt-repository -y "deb https://cli-assets.heroku.com/branches/stable/apt
 
 
 # Install arduino cli
-
 RUN wget -O arduino.tar.xz https://downloads.arduino.cc/arduino-${arduinoversion}-linux64.tar.xz && tar -xJf arduino.tar.xz && rm -f arduino.tar.xz
 
 RUN mv arduino-${arduinoversion} /usr/local/share/arduino/ && /usr/local/share/arduino/install.sh && ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino 
+
+
+CMD sudo -u user code --verbose
