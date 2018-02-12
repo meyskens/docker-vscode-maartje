@@ -84,5 +84,6 @@ RUN mv arduino-${arduinoversion} /usr/local/share/arduino/ && /usr/local/share/a
 RUN curl -sSL https://rvm.io/mpapis.asc | sudo gpg --import -
 RUN curl -sSL https://get.rvm.io | bash -s stable
 RUN /bin/bash -c "source /etc/profile.d/rvm.sh && rvm install 2.4"
+RUN gem install bundle
 
 CMD sudo -u user code --verbose
