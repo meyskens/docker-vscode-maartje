@@ -84,8 +84,8 @@ RUN mv arduino-${arduinoversion} /usr/local/share/arduino/ && /usr/local/share/a
 RUN curl -sSL https://rvm.io/mpapis.asc | sudo gpg --import -
 RUN curl -sSL https://get.rvm.io | bash -s stable
 RUN /bin/bash -c "source /etc/profile.d/rvm.sh && rvm install 2.4"
-RUN gem install bundle
-RUN gem install rubocop rubocop ruby-lint reek fasterer debride rcodetools
+RUN gem install bundle rake
+RUN gem install fastri rubocop rubocop ruby-lint reek fasterer debride rcodetools
 RUN gem install debase -v 0.2.2.beta10
 
 
