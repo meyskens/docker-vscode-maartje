@@ -87,6 +87,6 @@ RUN /bin/bash -c "source /etc/profile.d/rvm.sh && rvm install 2.4"
 RUN gem install bundle rake
 RUN gem install fastri rubocop rubocop ruby-lint reek fasterer debride rcodetools
 RUN gem install debase -v 0.2.2.beta10
-
+RUN gem install rails
 
 CMD sudo -u user code --verbose
