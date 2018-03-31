@@ -6,7 +6,8 @@ RUN apt-get update && apt-get install -y \
 	gpg \
 	git \
     	sudo \
-	direnv
+	direnv \
+	jq
 
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg &&\
     mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg &&\
