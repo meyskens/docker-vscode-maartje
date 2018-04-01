@@ -45,8 +45,8 @@ RUN sudo npm install -g eslint babel-eslint http-server babel-cli webpack nodemo
 RUN npm install -g cordova ionic
 
 #Install hugo
-RUN wget https://github.com/spf13/hugo/releases/download/v0.21/hugo_0.21_Linux-64bit.deb &&\
-    dpkg -i hugo_0.21_Linux-64bit.deb && rm -f /hugo_0.21_Linux-64bit.deb 
+RUN wget https://github.com/gohugoio/hugo/releases/download/v0.37.1/hugo_0.37.1_Linux-64bit.deb &&\
+    dpkg -i hugo_0.37.1_Linux-64bit.deb  && rm -f /hugo_0.37.1_Linux-64bit.deb 
 
 #Install Travis CLI
 RUN apt-get install -y ruby ruby-dev && \
