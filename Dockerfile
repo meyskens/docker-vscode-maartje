@@ -5,7 +5,9 @@ RUN apt-get update && apt-get install -y \
 	apt-transport-https \
 	gpg \
 	git \
-    sudo
+    	sudo \
+	direnv \
+	jq
 
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg &&\
     mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg &&\
@@ -26,7 +28,7 @@ RUN usermod -s /usr/bin/fish user
 
 #Install golang
 RUN apt-get update && apt-get install -y wget tar git
-RUN wget -O -  "https://golang.org/dl/go1.9.linux-amd64.tar.gz" | tar xzC /usr/local
+RUN wget -O -  "https://golang.org/dl/go1.10.linux-amd64.tar.gz" | tar xzC /usr/local
 RUN cp /usr/local/go/bin/* /usr/local/bin
 
 ENV GOPATH /home/user/go
@@ -43,8 +45,8 @@ RUN sudo npm install -g eslint babel-eslint http-server babel-cli webpack nodemo
 RUN npm install -g cordova ionic
 
 #Install hugo
-RUN wget https://github.com/spf13/hugo/releases/download/v0.21/hugo_0.21_Linux-64bit.deb &&\
-    dpkg -i hugo_0.21_Linux-64bit.deb && rm -f /hugo_0.21_Linux-64bit.deb 
+RUN wget https://github.com/gohugoio/hugo/releases/download/v0.37.1/hugo_0.37.1_Linux-64bit.deb &&\
+    dpkg -i hugo_0.37.1_Linux-64bit.deb  && rm -f /hugo_0.37.1_Linux-64bit.deb 
 
 #Install Travis CLI
 RUN apt-get install -y ruby ruby-dev && \
@@ -84,9 +86,10 @@ RUN mv arduino-${arduinoversion} /usr/local/share/arduino/ && /usr/local/share/a
 RUN curl -sSL https://rvm.io/mpapis.asc | sudo gpg --import -
 RUN curl -sSL https://get.rvm.io | bash -s stable
 RUN /bin/bash -c "source /etc/profile.d/rvm.sh && rvm install 2.4"
-RUN gem install bundle
-RUN gem install rubocop rubocop ruby-lint reek fasterer debride rcodetools
+RUN gem install bundle rake
+RUN gem install fastri rubocop rubocop ruby-lint reek fasterer debride rcodetools
 RUN gem install debase -v 0.2.2.beta10
+RUN gem install rails
 
 # Install Kubernetes
 RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
@@ -95,6 +98,5 @@ RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add 
     EOF && \
     apt-get update && \
     apt-get install -y kubectl
-
 
 CMD sudo -u user code --verbose
