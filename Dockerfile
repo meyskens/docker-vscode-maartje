@@ -88,5 +88,13 @@ RUN gem install bundle
 RUN gem install rubocop rubocop ruby-lint reek fasterer debride rcodetools
 RUN gem install debase -v 0.2.2.beta10
 
+# Install Kubernetes
+RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
+    cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+    deb http://apt.kubernetes.io/ kubernetes-xenial main
+    EOF && \
+    apt-get update && \
+    apt-get install -y kubectl
+
 
 CMD sudo -u user code --verbose
