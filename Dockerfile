@@ -97,4 +97,11 @@ RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add 
     apt-get update && \
     apt-get install -y kubectl
 
+# Install Helm
+RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-linux-amd64.tar.gz && \
+    tar xzf helm-v2.8.2-linux-amd64.tar.gz && \
+    mv linux-amd64/helm /usr/local/bin/ && \
+    rm -f helm-v2.8.2-linux-amd64.tar.gz &&\
+    rm -fr linux-amd64
+
 CMD sudo -u user code --verbose
