@@ -19,8 +19,7 @@ RUN apt-get update && apt-get install -y code
 RUN apt-get install -y pkg-config libwebkit2gtk-4.0-dev libgtk-3-dev
 
 #Add some personal stuff
-
-RUN apt-get install -y build-essential
+RUN apt-get install -y build-essential unison
 
 # Add the fish shell
 RUN apt-get install -y fish
