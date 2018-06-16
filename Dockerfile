@@ -104,9 +104,4 @@ RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-linux-amd64.
     rm -f helm-v2.8.2-linux-amd64.tar.gz &&\
     rm -fr linux-amd64
 
-# Test if i get myself in risk
-ADD https://get.aquasec.com/microscanner /
-RUN chmod +x /microscanner
-RUN /microscanner NTA2OTk5MDMwZjk4
-
 CMD sudo -u user code --verbose
