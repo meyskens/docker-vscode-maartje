@@ -112,8 +112,6 @@ RUN wget https://github.com/coreos/etcd/releases/download/v3.3.8/etcd-v3.3.8-lin
     rm -f etcd-v3.3.8-linux-amd64.tar.gz &&\
     rm -fr etcd-v3.3.8-linux-amd64
     
-    
-
 # Install ffmpeg
 
 RUN apt-get install -y ffmpeg
