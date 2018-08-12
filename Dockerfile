@@ -104,4 +104,8 @@ RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-linux-amd64.
     rm -f helm-v2.8.2-linux-amd64.tar.gz &&\
     rm -fr linux-amd64
 
+# Install ffmpeg
+
+RUN apt-get install -y ffmpeg
+
 CMD sudo -u user code --verbose
