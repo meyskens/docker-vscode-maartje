@@ -117,4 +117,8 @@ RUN wget https://github.com/coreos/etcd/releases/download/v3.3.8/etcd-v3.3.8-lin
 
 RUN apt-get install -y ffmpeg
 
+# Add user to docker
+
+RUN usermod -aG docker user
+
 CMD sudo -u user code --verbose
