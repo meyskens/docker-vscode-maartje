@@ -117,6 +117,13 @@ RUN wget https://github.com/etcd-io/etcd/releases/download/v3.3.8/etcd-v3.3.8-li
 
 RUN apt-get install -y ffmpeg
 
+# Install terraform
+
+RUN wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip &&\
+    unzip terraform_0.11.8_linux_amd64.zip &&\
+    mv terraform /usr/local/bin/ &&\
+    rm terraform_0.11.8_linux_amd64.zip
+
 # Add user to docker
 
 RUN usermod -aG docker user
