@@ -99,10 +99,10 @@ RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add 
     apt-get install -y kubectl
 
 # Install Helm
-RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-linux-amd64.tar.gz && \
-    tar xzf helm-v2.8.2-linux-amd64.tar.gz && \
+RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.9.1-linux-amd64.tar.gz && \
+    tar xzf helm-v2.9.1-linux-amd64.tar.gz && \
     mv linux-amd64/helm /usr/local/bin/ && \
-    rm -f helm-v2.8.2-linux-amd64.tar.gz &&\
+    rm -f helm-v2.9.1-linux-amd64.tar.gz &&\
     rm -fr linux-amd64
     
 # Install etcd
@@ -124,6 +124,13 @@ RUN wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_
     mv terraform /usr/local/bin/ &&\
     rm terraform_0.11.8_linux_amd64.zip
 
+# Install helm provider (Please do not use this)
+
+RUN wgethttps://github.com/mcuadros/terraform-provider-helm/releases/download/v0.3.2/terraform-provider-helm_v0.3.2_linux_amd64.tar.gz &&\
+    tar xzf terraform-provider-helm_v0.3.2_linux_amd64.tar.gz &&\
+    mv terraform-provider-helm_linux_amd64/terraform-provider-helm /usr/local/bin/ &&\
+    rm -fr terraform-provider-helm_linux_amd64 &&\
+    rm -f terraform-provider-helm_v0.3.2_linux_amd64.tar.gz
 # Add user to docker
 
 RUN usermod -aG docker user
