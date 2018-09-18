@@ -63,6 +63,7 @@ RUN apt-get -y install httpie
 RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list &&\
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - &&\
     apt-get update && apt-get install -y google-cloud-sdk google-cloud-sdk-app-engine-go
+RUN ln -s /usr/bin/gcloud /usr/local/bin/gcloud
 
 #Install Docker, what??? Why are you looking that way at me?
 RUN curl https://get.docker.com | bash
@@ -124,13 +125,6 @@ RUN wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_
     mv terraform /usr/local/bin/ &&\
     rm terraform_0.11.8_linux_amd64.zip
 
-# Install helm provider (Please do not use this)
-
-RUN wgethttps://github.com/mcuadros/terraform-provider-helm/releases/download/v0.3.2/terraform-provider-helm_v0.3.2_linux_amd64.tar.gz &&\
-    tar xzf terraform-provider-helm_v0.3.2_linux_amd64.tar.gz &&\
-    mv terraform-provider-helm_linux_amd64/terraform-provider-helm /usr/local/bin/ &&\
-    rm -fr terraform-provider-helm_linux_amd64 &&\
-    rm -f terraform-provider-helm_v0.3.2_linux_amd64.tar.gz
 # Add user to docker
 
 RUN usermod -aG docker user
