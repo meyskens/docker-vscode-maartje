@@ -121,10 +121,10 @@ RUN apt-get install -y ffmpeg
 
 # Install terraform
 
-RUN wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip &&\
-    unzip terraform_0.11.8_linux_amd64.zip &&\
+RUN wget https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip &&\
+    unzip terraform_0.11.11_linux_amd64.zip &&\
     mv terraform /usr/local/bin/ &&\
-    rm terraform_0.11.8_linux_amd64.zip
+    rm terraform_0.11.11_linux_amd64.zip
     
 # Install ansible
 RUN echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main">>/etc/apt/sources.list
