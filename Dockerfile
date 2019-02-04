@@ -127,7 +127,7 @@ RUN apt-get install -y python-pip
 
 # Install protoc
 RUN PROTOC_ZIP=protoc-3.6.1-linux-x86_64.zip &&\
-    curl -OL https://github.com/google/protobuf/releases/download/v3.3.0/$PROTOC_ZIP  &&\
+    curl -OL https://github.com/google/protobuf/releases/download/v3.6.1/$PROTOC_ZIP  &&\
     unzip -o $PROTOC_ZIP -d /usr/local bin/protoc  &&\
     rm -f $PROTOC_ZIP
 
