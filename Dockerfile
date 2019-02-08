@@ -125,6 +125,9 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367 &&
 # Install pip
 RUN apt-get install -y python-pip
 
+# Install AWS CLI
+RUN pip install awscli
+
 # Install protoc
 RUN PROTOC_ZIP=protoc-3.6.1-linux-x86_64.zip &&\
     curl -OL https://github.com/google/protobuf/releases/download/v3.6.1/$PROTOC_ZIP  &&\
