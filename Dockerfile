@@ -31,7 +31,7 @@ RUN usermod -s /usr/bin/fish user
 
 #Install golang
 RUN apt-get update && apt-get install -y wget tar git
-RUN wget -O -  "https://golang.org/dl/go1.11.linux-amd64.tar.gz" | tar xzC /usr/local
+RUN wget -O -  "https://golang.org/dl/go1.12.linux-amd64.tar.gz" | tar xzC /usr/local
 RUN cp /usr/local/go/bin/* /usr/local/bin
 
 ENV GOPATH /home/user/go
@@ -112,10 +112,10 @@ RUN apt-get install -y ffmpeg
 
 # Install terraform
 
-RUN wget https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip &&\
-    unzip terraform_0.11.11_linux_amd64.zip &&\
+RUN wget https://releases.hashicorp.com/terraform/0.11.12/terraform_0.11.12_linux_amd64.zip &&\
+    unzip terraform_0.11.12_linux_amd64.zip &&\
     mv terraform /usr/local/bin/ &&\
-    rm terraform_0.11.11_linux_amd64.zip
+    rm terraform_0.11.12_linux_amd64.zip
     
 # Install ansible
 RUN echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main">>/etc/apt/sources.list
