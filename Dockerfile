@@ -98,6 +98,11 @@ RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.9.1-linux-amd64.
     mv linux-amd64/helm /usr/local/bin/ && \
     rm -f helm-v2.9.1-linux-amd64.tar.gz &&\
     rm -fr linux-amd64
+RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-linux-amd64.tar.gz && \
+    tar xzf helm-v2.8.1-linux-amd64.tar.gz && \
+    mv linux-amd64/helm /usr/local/bin/helm282 && \
+    rm -f helm-v2.8.2-linux-amd64.tar.gz &&\
+    rm -fr linux-amd64
     
 # Install etcd
 RUN wget https://github.com/etcd-io/etcd/releases/download/v3.3.8/etcd-v3.3.8-linux-amd64.tar.gz && \
