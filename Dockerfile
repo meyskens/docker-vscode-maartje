@@ -122,12 +122,12 @@ RUN wget https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linu
     unzip terraform_0.11.14_linux_amd64.zip &&\
     mv terraform /usr/local/bin/ &&\
     rm terraform_0.11.14_linux_amd64.zip
-    
-# Install ansible
-RUN pip install ansible==2.7
 
 # Install pip
-RUN apt-get install -y python-pip
+RUN apt-get install -y python-pip 
+ 
+# Install ansible
+RUN pip install ansible==2.7
 
 # Install AWS CLI
 RUN pip install awscli
