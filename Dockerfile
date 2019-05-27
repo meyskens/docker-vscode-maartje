@@ -124,9 +124,7 @@ RUN wget https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linu
     rm terraform_0.11.14_linux_amd64.zip
     
 # Install ansible
-RUN echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main">>/etc/apt/sources.list
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367 &&\
-    apt-get update && apt-get install -y ansible
+RUN pip install ansible==2.7
 
 # Install pip
 RUN apt-get install -y python-pip
