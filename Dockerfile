@@ -103,6 +103,11 @@ RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-linux-amd64.
     mv linux-amd64/helm /usr/local/bin/helm282 && \
     rm -f helm-v2.8.2-linux-amd64.tar.gz &&\
     rm -fr linux-amd64
+ENV CT_VERSION=2.3.3
+RUN curl -Lo chart-testing_${CT_VERSION}_linux_amd64.tar.gz https://github.com/helm/chart-testing/releases/download/v${CT_VERSION}/chart-testing_${CT_VERSION}_linux_amd64.tar.gz  && \
+     tar xzf chart-testing_${CT_VERSION}_linux_amd64.tar.gz  && \
+     chmod +x ct && sudo mv ct /usr/local/bin/  && \
+     mv etc /etc/ct
     
 # Install etcd
 RUN wget https://github.com/etcd-io/etcd/releases/download/v3.3.8/etcd-v3.3.8-linux-amd64.tar.gz && \
