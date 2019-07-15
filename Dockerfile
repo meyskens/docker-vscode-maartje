@@ -152,6 +152,12 @@ RUN PROTOC_ZIP=protoc-3.6.1-linux-x86_64.zip &&\
     curl -OL https://github.com/google/protobuf/releases/download/v3.6.1/$PROTOC_ZIP  &&\
     unzip -o $PROTOC_ZIP -d /usr/local bin/protoc  &&\
     rm -f $PROTOC_ZIP
+    
+RUN wget https://github.com/prometheus/prometheus/releases/download/v2.11.1/prometheus-2.11.1.linux-amd64.tar.gz &&\
+    tar xzf prometheus-2.11.1.linux-amd64.tar.gz &&\
+    mv prometheus-2.11.1.linux-amd64/promtool /usr/local/bin/promtool &&\
+    rm -fr prometheus-2.11.1.linux-amd64 &&\
+    rm prometheus-2.11.1.linux-amd64.tar.gz
 
 # Add user to docker
 
