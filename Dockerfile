@@ -133,10 +133,10 @@ RUN wget https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linu
     mv terraform /usr/local/bin/ &&\
     rm terraform_0.11.14_linux_amd64.zip
     
-RUN wget https://releases.hashicorp.com/terraform/0.12.4/terraform_0.12.4_linux_amd64.zip &&\
-    unzip terraform_0.12.4_linux_amd64.zip &&\
+RUN wget https://releases.hashicorp.com/terraform/0.12.5/terraform_0.12.5_linux_amd64.zip &&\
+    unzip terraform_0.12.5_linux_amd64.zip &&\
     mv terraform /usr/local/bin/tf12 &&\
-    rm terraform_0.12.4_linux_amd64.zip
+    rm terraform_0.12.5_linux_amd64.zip
 
 # Install pip
 RUN apt-get install -y python-pip 
