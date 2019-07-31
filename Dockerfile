@@ -158,6 +158,12 @@ RUN wget https://github.com/prometheus/prometheus/releases/download/v2.11.1/prom
     mv prometheus-2.11.1.linux-amd64/promtool /usr/local/bin/promtool &&\
     rm -fr prometheus-2.11.1.linux-amd64 &&\
     rm prometheus-2.11.1.linux-amd64.tar.gz
+    
+RUN wget https://github.com/github/hub/releases/download/v2.12.3/hub-linux-amd64-2.12.3.tgz &&\
+    tar xzf hub-linux-amd64-2.12.3.tgz  &&\
+    hub-linux-amd64-2.12.3/install &&\
+    rm -fr hub-linux-amd64-2.12.3 &&\
+    rm hub-linux-amd64-2.12.3.tgz 
 
 # Add user to docker
 
