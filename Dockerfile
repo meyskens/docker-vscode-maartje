@@ -165,6 +165,11 @@ RUN wget https://github.com/github/hub/releases/download/v2.12.3/hub-linux-amd64
     rm -fr hub-linux-amd64-2.12.3 &&\
     rm hub-linux-amd64-2.12.3.tgz 
 
+# Install operator sdk
+ENV OPRATOR_SDK_VERSION=v0.10.0
+RUN curl -OJL https://github.com/operator-framework/operator-sdk/releases/download/${OPRATOR_SDK_VERSION}/operator-sdk-${OPRATOR_SDK_VERSION}-x86_64-linux-gnu
+RUN chmod +x operator-sdk-${OPRATOR_SDK_VERSION}-x86_64-linux-gnu && sudo mkdir -p /usr/local/bin/ && sudo cp operator-sdk-${OPRATOR_SDK_VERSION}-x86_64-linux-gnu /usr/local/bin/operator-sdk && rm operator-sdk-${OPRATOR_SDK_VERSION}-x86_64-linux-gnu
+
 # Add user to docker
 
 RUN usermod -aG docker user
