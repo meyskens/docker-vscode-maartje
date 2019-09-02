@@ -140,7 +140,7 @@ RUN wget https://releases.hashicorp.com/terraform/0.12.6/terraform_0.12.6_linux_
     rm terraform_0.12.6_linux_amd64.zip
     
 # Install packer
-RUN https://releases.hashicorp.com/packer/1.4.3/packer_1.4.3_linux_amd64.zip &&\
+RUN wget https://releases.hashicorp.com/packer/1.4.3/packer_1.4.3_linux_amd64.zip &&\
     unzip packer_1.4.3_linux_amd64.zip &&\
     mv packer /usr/local/bin/ &&\
     rm packer_1.4.3_linux_amd64.zip
