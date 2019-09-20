@@ -10,8 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - name: Configure Docker
+      run: |
+        echo '{"experimental":true}' | sudo tee /etc/docker/daemon.json
+        sudo service docker restart
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag docker.pkg.github.com/meyskens/docker-vscode-maartje/code:latest
+      run: docker build . --squash --file Dockerfile --tag docker.pkg.github.com/meyskens/docker-vscode-maartje/code:latest
+      env:
+        DOCKER_CLI_EXPERIMENTAL: enabled
     - name: Log in to registry
       run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login docker.pkg.github.com -u "meyskens" --password-stdin
     - name: Push image
