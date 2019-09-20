@@ -13,6 +13,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag docker.pkg.github.com/meyskens/docker-vscode-maartje/code:latest
     - name: Log in to registry
-      run: echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u meyskens --password-stdin
+      run: echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u "${GITHUB_ACTOR}" --password-stdin
     - name: Push image
       run: docker push docker.pkg.github.com/meyskens/docker-vscode-maartje/code:latest
