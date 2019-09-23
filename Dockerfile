@@ -177,6 +177,14 @@ ENV OPRATOR_SDK_VERSION=v0.10.0
 RUN curl -OJL https://github.com/operator-framework/operator-sdk/releases/download/${OPRATOR_SDK_VERSION}/operator-sdk-${OPRATOR_SDK_VERSION}-x86_64-linux-gnu
 RUN chmod +x operator-sdk-${OPRATOR_SDK_VERSION}-x86_64-linux-gnu && sudo mkdir -p /usr/local/bin/ && sudo cp operator-sdk-${OPRATOR_SDK_VERSION}-x86_64-linux-gnu /usr/local/bin/operator-sdk && rm operator-sdk-${OPRATOR_SDK_VERSION}-x86_64-linux-gnu
 
+# Install doctl
+RUN wget https://github.com/digitalocean/doctl/releases/download/v1.31.2/doctl-1.31.2-linux-amd64.tar.gz &&\
+    tar xzf doctl-1.31.2-linux-amd64.tar.gz  &&\
+    mv doctl /usr/local/bin/  &&\
+    chmod +x /usr/local/bin/doctl  &&\
+    rm doctl-1.31.2-linux-amd64.tar.gz
+
+
 # Add user to docker
 
 RUN usermod -aG docker user
