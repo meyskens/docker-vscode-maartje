@@ -23,6 +23,9 @@ RUN apt-get update && apt-get install -y code
 # Install GUI dev
 RUN apt-get install -y pkg-config libwebkit2gtk-4.0-dev libgtk-3-dev
 
+# Install sound dev
+RUN apt-get install -y libasound2-dev libwebkit2gtk-4.0-dev
+
 #Add some personal stuff
 RUN apt-get install -y build-essential unison nano
 ENV EDITOR=nano
