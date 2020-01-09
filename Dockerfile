@@ -52,6 +52,9 @@ RUN sudo npm install -g eslint babel-eslint http-server babel-cli webpack nodemo
 #Install ionic
 RUN npm install -g cordova ionic
 
+#Install vue
+RUN npm install -g @vue/cli
+
 #Install ZOHO Widget SDK
 RUN npm install -g zoho-extension-toolkit
 #Install hugo
