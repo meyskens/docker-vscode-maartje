@@ -124,7 +124,12 @@ RUN mkdir /ct && cd /ct && \
     chmod +x ct && sudo mv ct /usr/local/bin/  && \
     mv etc /etc/ct && \
     cd / && rm -fr /ct
-    
+
+# Install kind
+RUN curl -Lo ./kind https://github.com/kubernetes-sigs/kind/releases/download/v0.7.0/kind-linux-amd64 && \ 
+    chmod +x ./kind && \
+    mv ./kind /usr/bin/kind
+
 # Install etcd
 RUN wget https://github.com/etcd-io/etcd/releases/download/v3.3.8/etcd-v3.3.8-linux-amd64.tar.gz && \
     tar xzf etcd-v3.3.8-linux-amd64.tar.gz && \
