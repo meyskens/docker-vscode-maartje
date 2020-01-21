@@ -114,10 +114,10 @@ RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.14.1-linux-amd64
     rm -fr linux-amd64
     
 # Install Helm3
-RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v3.0.2-linux-amd64.tar.gz && \
+RUN wget https://get.helm.sh/helm-v3.0.2-linux-amd64.tar.gz && \
     tar xzf helm-v3.0.2-linux-amd64.tar.gz && \
     mv linux-amd64/helm /usr/local/bin/helm && \
-    rm -f helm-v2.14.1-linux-amd64.tar.gz &&\
+    rm -f helm-v3.0.2-linux-amd64.tar.gz&&\
     rm -fr linux-amd64
 
 ENV CT_VERSION=2.3.3
