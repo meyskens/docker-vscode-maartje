@@ -109,14 +109,17 @@ RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add 
 # Install Helm
 RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.14.1-linux-amd64.tar.gz && \
     tar xzf helm-v2.14.1-linux-amd64.tar.gz && \
-    mv linux-amd64/helm /usr/local/bin/ && \
+    mv linux-amd64/helm /usr/local/bin/helm2 && \
     rm -f helm-v2.14.1-linux-amd64.tar.gz &&\
     rm -fr linux-amd64
-RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-linux-amd64.tar.gz && \
-    tar xzf helm-v2.8.2-linux-amd64.tar.gz && \
-    mv linux-amd64/helm /usr/local/bin/helm282 && \
-    rm -f helm-v2.8.2-linux-amd64.tar.gz &&\
+    
+# Install Helm3
+RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v3.0.2-linux-amd64.tar.gz && \
+    tar xzf helm-v3.0.2-linux-amd64.tar.gz && \
+    mv linux-amd64/helm /usr/local/bin/helm && \
+    rm -f helm-v2.14.1-linux-amd64.tar.gz &&\
     rm -fr linux-amd64
+
 ENV CT_VERSION=2.3.3
 RUN mkdir /ct && cd /ct && \ 
     curl -Lo chart-testing_${CT_VERSION}_linux_amd64.tar.gz https://github.com/helm/chart-testing/releases/download/v${CT_VERSION}/chart-testing_${CT_VERSION}_linux_amd64.tar.gz  && \
