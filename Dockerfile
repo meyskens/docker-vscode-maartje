@@ -201,10 +201,11 @@ RUN wget https://github.com/digitalocean/doctl/releases/download/v1.31.2/doctl-1
     mv doctl /usr/local/bin/  &&\
     chmod +x /usr/local/bin/doctl  &&\
     rm doctl-1.31.2-linux-amd64.tar.gz
-
+    
+# Install thomas-bot deps
+RUN apt-get install -y libsox-dev libsdl2-dev portaudio19-dev libopusfile-dev libopus-dev
 
 # Add user to docker
-
 RUN usermod -aG docker user
 
 CMD sudo -u user code --verbose
