@@ -70,9 +70,6 @@ RUN wget https://github.com/gohugoio/hugo/releases/download/v0.51/hugo_0.51_Linu
 RUN apt-get install -y ruby ruby-dev && \
     gem install travis -v 1.8.8 --no-rdoc --no-ri
 
-#Install PHP
-RUN apt-get -y install php7.0 php7.0-curl php7.0-mbstring
-
 #Install httpie
 RUN apt-get -y install httpie
 
