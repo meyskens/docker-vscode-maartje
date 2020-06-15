@@ -143,16 +143,11 @@ RUN wget https://github.com/etcd-io/etcd/releases/download/v3.3.8/etcd-v3.3.8-li
 RUN apt-get install -y ffmpeg
 
 # Install terraform
-
-RUN wget https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip &&\
-    unzip terraform_0.11.14_linux_amd64.zip &&\
-    mv terraform /usr/local/bin/ &&\
-    rm terraform_0.11.14_linux_amd64.zip
     
-RUN wget https://releases.hashicorp.com/terraform/0.12.6/terraform_0.12.6_linux_amd64.zip &&\
-    unzip terraform_0.12.6_linux_amd64.zip &&\
-    mv terraform /usr/local/bin/tf12 &&\
-    rm terraform_0.12.6_linux_amd64.zip
+RUN wget https://releases.hashicorp.com/terraform/0.12.26/terraform_0.12.26_linux_amd64.zip &&\
+    unzip terraform_0.12.26_linux_amd64.zip &&\
+    mv terraform /usr/local/bin/terraform &&\
+    rm terraform_0.12.26_linux_amd64.zip
     
 # Install packer
 RUN wget https://releases.hashicorp.com/packer/1.4.3/packer_1.4.3_linux_amd64.zip &&\
