@@ -66,6 +66,11 @@ RUN npm install -g zoho-extension-toolkit
 RUN wget https://github.com/gohugoio/hugo/releases/download/v0.51/hugo_0.51_Linux-64bit.deb &&\
     dpkg -i hugo_0.51_Linux-64bit.deb  && rm -f /hugo_0.51_Linux-64bit.deb 
 
+# Install GitHub CLI
+RUN wget https://github.com/cli/cli/releases/download/v0.11.0/gh_0.11.0_linux_amd64.deb &&\
+    dpkg -i gh_0.11.0_linux_amd64.deb   && rm -f gh_0.11.0_linux_amd64.deb 
+
+
 #Install Travis CLI
 RUN apt-get install -y ruby ruby-dev && \
     gem install travis -v 1.8.8 --no-rdoc --no-ri
