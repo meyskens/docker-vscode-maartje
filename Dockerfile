@@ -60,6 +60,9 @@ RUN npm install -g cordova ionic
 #Install vue
 RUN npm install -g @vue/cli
 
+#Install twilio
+RUN npm install -g twilio-cli
+
 #Install ZOHO Widget SDK
 RUN npm install -g zoho-extension-toolkit
 #Install hugo
