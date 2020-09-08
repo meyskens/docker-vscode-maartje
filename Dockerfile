@@ -206,7 +206,7 @@ RUN wget https://github.com/digitalocean/doctl/releases/download/v1.31.2/doctl-1
 RUN apt-get install -y libsox-dev libsdl2-dev portaudio19-dev libopusfile-dev libopus-dev
 
 # Add cert-manager CLI
-RUN curl -L -o kubectl-cert-manager.tar.gz https://github.com/jetstack/cert-manager/releases/download/v0.16.0-alpha.0/kubectl-cert_manager-linux-amd64.tar.gz &&\
+RUN curl -L -o kubectl-cert-manager.tar.gz https://github.com/jetstack/cert-manager/releases/download/v1.0.1/kubectl-cert_manager-linux-amd64.tar.gz &&\
     tar xzf kubectl-cert-manager.tar.gz &&\
     mv kubectl-cert_manager /usr/local/bin &&\
     rm -f kubectl-cert-manager.tar.gz
