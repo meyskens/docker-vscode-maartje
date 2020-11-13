@@ -70,8 +70,8 @@ RUN wget https://github.com/gohugoio/hugo/releases/download/v0.51/hugo_0.51_Linu
     dpkg -i hugo_0.51_Linux-64bit.deb  && rm -f /hugo_0.51_Linux-64bit.deb 
 
 # Install GitHub CLI
-RUN wget https://github.com/cli/cli/releases/download/v0.11.0/gh_0.11.0_linux_amd64.deb &&\
-    dpkg -i gh_0.11.0_linux_amd64.deb   && rm -f gh_0.11.0_linux_amd64.deb 
+RUN wget https://github.com/cli/cli/releases/download/v1.2.1/gh_1.2.1_linux_amd64.deb &&\
+    dpkg -i gh_1.2.1_linux_amd64.deb && rm -f gh_1.2.1_linux_amd64.deb 
 
 
 #Install Travis CLI
