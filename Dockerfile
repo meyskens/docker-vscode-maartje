@@ -14,6 +14,11 @@ RUN apt-get update && apt-get install -y \
 	sshuttle \
 	mercurial
 
+RUN curl https://bazel.build/bazel-release.pub.gpg | apt-key add - &&\
+    echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list
+
+RUN apt-get update && apt-get install -y bazel
+
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg &&\
     mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg &&\
     echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list
@@ -22,6 +27,9 @@ RUN apt-get update && apt-get install -y code
 
 # Install GUI dev
 RUN apt-get install -y pkg-config libwebkit2gtk-4.0-dev libgtk-3-dev
+
+# Install sound dev
+RUN apt-get install -y libasound2-dev libwebkit2gtk-4.0-dev
 
 #Add some personal stuff
 RUN apt-get install -y build-essential unison nano
@@ -33,7 +41,7 @@ RUN usermod -s /usr/bin/fish user
 
 #Install golang
 RUN apt-get update && apt-get install -y wget tar git
-RUN wget -O -  "https://golang.org/dl/go1.12.8.linux-amd64.tar.gz" | tar xzC /usr/local
+RUN wget -O -  "https://golang.org/dl/go1.15.7.linux-amd64.tar.gz" | tar xzC /usr/local
 RUN cp /usr/local/go/bin/* /usr/local/bin
 
 ENV GOPATH /home/user/go
@@ -49,19 +57,22 @@ RUN sudo npm install -g eslint babel-eslint http-server babel-cli webpack nodemo
 #Install ionic
 RUN npm install -g cordova ionic
 
+#Install vue
+RUN npm install -g @vue/cli
+
+#Install twilio
+RUN npm install -g twilio-cli
+
 #Install ZOHO Widget SDK
 RUN npm install -g zoho-extension-toolkit
-
 #Install hugo
 RUN wget https://github.com/gohugoio/hugo/releases/download/v0.51/hugo_0.51_Linux-64bit.deb &&\
     dpkg -i hugo_0.51_Linux-64bit.deb  && rm -f /hugo_0.51_Linux-64bit.deb 
 
-#Install Travis CLI
-RUN apt-get install -y ruby ruby-dev && \
-    gem install travis -v 1.8.8 --no-rdoc --no-ri
+# Install GitHub CLI
+RUN wget https://github.com/cli/cli/releases/download/v1.2.1/gh_1.2.1_linux_amd64.deb &&\
+    dpkg -i gh_1.2.1_linux_amd64.deb && rm -f gh_1.2.1_linux_amd64.deb 
 
-#Install PHP
-RUN apt-get -y install php7.0 php7.0-curl php7.0-mbstring
 
 #Install httpie
 RUN apt-get -y install httpie
@@ -105,14 +116,17 @@ RUN wget https://github.com/openshift/origin/releases/download/v3.11.0/openshift
 # Install Helm
 RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.14.1-linux-amd64.tar.gz && \
     tar xzf helm-v2.14.1-linux-amd64.tar.gz && \
-    mv linux-amd64/helm /usr/local/bin/ && \
+    mv linux-amd64/helm /usr/local/bin/helm2 && \
     rm -f helm-v2.14.1-linux-amd64.tar.gz &&\
     rm -fr linux-amd64
-RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-linux-amd64.tar.gz && \
-    tar xzf helm-v2.8.2-linux-amd64.tar.gz && \
-    mv linux-amd64/helm /usr/local/bin/helm282 && \
-    rm -f helm-v2.8.2-linux-amd64.tar.gz &&\
+    
+# Install Helm3
+RUN wget https://get.helm.sh/helm-v3.0.2-linux-amd64.tar.gz && \
+    tar xzf helm-v3.0.2-linux-amd64.tar.gz && \
+    mv linux-amd64/helm /usr/local/bin/helm && \
+    rm -f helm-v3.0.2-linux-amd64.tar.gz&&\
     rm -fr linux-amd64
+
 ENV CT_VERSION=2.3.3
 RUN mkdir /ct && cd /ct && \ 
     curl -Lo chart-testing_${CT_VERSION}_linux_amd64.tar.gz https://github.com/helm/chart-testing/releases/download/v${CT_VERSION}/chart-testing_${CT_VERSION}_linux_amd64.tar.gz  && \
@@ -120,7 +134,12 @@ RUN mkdir /ct && cd /ct && \
     chmod +x ct && sudo mv ct /usr/local/bin/  && \
     mv etc /etc/ct && \
     cd / && rm -fr /ct
-    
+
+# Install kind
+RUN curl -Lo ./kind https://github.com/kubernetes-sigs/kind/releases/download/v0.7.0/kind-linux-amd64 && \ 
+    chmod +x ./kind && \
+    mv ./kind /usr/bin/kind
+
 # Install etcd
 RUN wget https://github.com/etcd-io/etcd/releases/download/v3.3.8/etcd-v3.3.8-linux-amd64.tar.gz && \
     tar xzf etcd-v3.3.8-linux-amd64.tar.gz && \
@@ -134,16 +153,11 @@ RUN wget https://github.com/etcd-io/etcd/releases/download/v3.3.8/etcd-v3.3.8-li
 RUN apt-get install -y ffmpeg
 
 # Install terraform
-
-RUN wget https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip &&\
-    unzip terraform_0.11.14_linux_amd64.zip &&\
-    mv terraform /usr/local/bin/ &&\
-    rm terraform_0.11.14_linux_amd64.zip
     
-RUN wget https://releases.hashicorp.com/terraform/0.12.6/terraform_0.12.6_linux_amd64.zip &&\
-    unzip terraform_0.12.6_linux_amd64.zip &&\
-    mv terraform /usr/local/bin/tf12 &&\
-    rm terraform_0.12.6_linux_amd64.zip
+RUN wget https://releases.hashicorp.com/terraform/0.12.27/terraform_0.12.27_linux_amd64.zip &&\
+    unzip terraform_0.12.27_linux_amd64.zip &&\
+    mv terraform /usr/local/bin/terraform &&\
+    rm terraform_0.12.27_linux_amd64.zip
     
 # Install packer
 RUN wget https://releases.hashicorp.com/packer/1.4.3/packer_1.4.3_linux_amd64.zip &&\
@@ -152,13 +166,13 @@ RUN wget https://releases.hashicorp.com/packer/1.4.3/packer_1.4.3_linux_amd64.zi
     rm packer_1.4.3_linux_amd64.zip
 
 # Install pip
-RUN apt-get install -y python-pip 
+RUN apt-get install -y python-pip  python3-pip
  
 # Install ansible
-RUN pip install ansible==2.7
+RUN pip3 install ansible==2.7
 
 # Install AWS CLI
-RUN pip install awscli
+RUN pip3 install awscli
 
 # Install protoc
 RUN PROTOC_ZIP=protoc-3.6.1-linux-x86_64.zip &&\
@@ -183,8 +197,23 @@ ENV OPRATOR_SDK_VERSION=v0.10.0
 RUN curl -OJL https://github.com/operator-framework/operator-sdk/releases/download/${OPRATOR_SDK_VERSION}/operator-sdk-${OPRATOR_SDK_VERSION}-x86_64-linux-gnu
 RUN chmod +x operator-sdk-${OPRATOR_SDK_VERSION}-x86_64-linux-gnu && sudo mkdir -p /usr/local/bin/ && sudo cp operator-sdk-${OPRATOR_SDK_VERSION}-x86_64-linux-gnu /usr/local/bin/operator-sdk && rm operator-sdk-${OPRATOR_SDK_VERSION}-x86_64-linux-gnu
 
-# Add user to docker
+# Install doctl
+RUN wget https://github.com/digitalocean/doctl/releases/download/v1.31.2/doctl-1.31.2-linux-amd64.tar.gz &&\
+    tar xzf doctl-1.31.2-linux-amd64.tar.gz  &&\
+    mv doctl /usr/local/bin/  &&\
+    chmod +x /usr/local/bin/doctl  &&\
+    rm doctl-1.31.2-linux-amd64.tar.gz
+    
+# Install thomas-bot deps
+RUN apt-get install -y libsox-dev libsdl2-dev portaudio19-dev libopusfile-dev libopus-dev
 
+# Add cert-manager CLI
+RUN curl -L -o kubectl-cert-manager.tar.gz https://github.com/jetstack/cert-manager/releases/download/v1.0.1/kubectl-cert_manager-linux-amd64.tar.gz &&\
+    tar xzf kubectl-cert-manager.tar.gz &&\
+    mv kubectl-cert_manager /usr/local/bin &&\
+    rm -f kubectl-cert-manager.tar.gz
+
+# Add user to docker
 RUN usermod -aG docker user
 
 CMD sudo -u user code --verbose
