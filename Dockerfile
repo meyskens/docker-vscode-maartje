@@ -74,10 +74,6 @@ RUN wget https://github.com/cli/cli/releases/download/v1.2.1/gh_1.2.1_linux_amd6
     dpkg -i gh_1.2.1_linux_amd64.deb && rm -f gh_1.2.1_linux_amd64.deb 
 
 
-#Install Travis CLI
-RUN apt-get install -y ruby ruby-dev && \
-    gem install travis -v 1.8.8 --no-rdoc --no-ri
-
 #Install httpie
 RUN apt-get -y install httpie
 
