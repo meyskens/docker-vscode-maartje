@@ -41,7 +41,7 @@ RUN usermod -s /usr/bin/fish user
 
 #Install golang
 RUN apt-get update && apt-get install -y wget tar git
-RUN wget -O -  "https://golang.org/dl/go1.15.7.linux-amd64.tar.gz" | tar xzC /usr/local
+RUN wget -O -  "https://golang.org/dl/go1.16.0.linux-amd64.tar.gz" | tar xzC /usr/local
 RUN cp /usr/local/go/bin/* /usr/local/bin
 
 ENV GOPATH /home/user/go
@@ -154,10 +154,10 @@ RUN apt-get install -y ffmpeg
 
 # Install terraform
     
-RUN wget https://releases.hashicorp.com/terraform/0.12.27/terraform_0.12.27_linux_amd64.zip &&\
-    unzip terraform_0.12.27_linux_amd64.zip &&\
+RUN wget https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_linux_amd64.zip &&\
+    unzip terraform_0.14.7_linux_amd64.zip &&\
     mv terraform /usr/local/bin/terraform &&\
-    rm terraform_0.12.27_linux_amd64.zip
+    rm terraform_0.14.7_linux_amd64.zip
     
 # Install packer
 RUN wget https://releases.hashicorp.com/packer/1.4.3/packer_1.4.3_linux_amd64.zip &&\
