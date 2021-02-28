@@ -41,7 +41,7 @@ RUN usermod -s /usr/bin/fish user
 
 #Install golang
 RUN apt-get update && apt-get install -y wget tar git
-RUN wget -O -  "https://golang.org/dl/go1.16.0.linux-amd64.tar.gz" | tar xzC /usr/local
+RUN wget -O -  "https://golang.org/dl/go1.16.linux-amd64.tar.gz" | tar xzC /usr/local
 RUN cp /usr/local/go/bin/* /usr/local/bin
 
 ENV GOPATH /home/user/go
@@ -86,9 +86,6 @@ RUN ln -s /usr/bin/gcloud /usr/local/bin/gcloud
 #Install Docker, what??? Why are you looking that way at me?
 RUN curl https://get.docker.com | bash
 RUN apt-get -y install docker-compose
-
-#Install Dep
-RUN go get -u github.com/golang/dep/cmd/dep
 
 #Install Heroku
 RUN apt-get install -y software-properties-common && add-apt-repository -y "deb https://cli-assets.heroku.com/branches/stable/apt ./" &&\
