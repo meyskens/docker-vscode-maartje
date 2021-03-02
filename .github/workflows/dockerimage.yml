@@ -19,6 +19,6 @@ jobs:
       env:
         DOCKER_CLI_EXPERIMENTAL: enabled
     - name: Log in to registry
-      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u "meyskens" --password-stdin
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "meyskens" --password-stdin
     - name: Push image
       run: docker push meyskens/vscode-maartje:latest
