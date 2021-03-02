@@ -153,8 +153,13 @@ RUN apt-get install -y ffmpeg
     
 RUN wget https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_linux_amd64.zip &&\
     unzip terraform_0.14.7_linux_amd64.zip &&\
-    mv terraform /usr/local/bin/terraform &&\
+    mv terraform /usr/local/bin/tf014 &&\
     rm terraform_0.14.7_linux_amd64.zip
+    
+RUN wget https://releases.hashicorp.com/terraform/0.13.6/terraform_0.13.6_linux_amd64.zip &&\
+    unzip terraform_0.13.6_linux_amd64.zip &&\
+    mv terraform /usr/local/bin/terraform &&\
+    rm terraform_0.13.6_linux_amd64.zip
     
 # Install packer
 RUN wget https://releases.hashicorp.com/packer/1.4.3/packer_1.4.3_linux_amd64.zip &&\
