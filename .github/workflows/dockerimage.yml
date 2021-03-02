@@ -15,10 +15,10 @@ jobs:
         echo '{"experimental":true}' | sudo tee /etc/docker/daemon.json
         sudo service docker restart
     - name: Build the Docker image
-      run: docker build . --squash --file Dockerfile --tag docker.pkg.github.com/meyskens/docker-vscode-maartje/code:latest
+      run: docker build . --squash --file Dockerfile --tag meyskens/vscode-maartje:latest
       env:
         DOCKER_CLI_EXPERIMENTAL: enabled
     - name: Log in to registry
-      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login docker.pkg.github.com -u "meyskens" --password-stdin
+      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u "meyskens" --password-stdin
     - name: Push image
-      run: docker push docker.pkg.github.com/meyskens/docker-vscode-maartje/code:latest
+      run: docker push meyskens/vscode-maartje:latest
