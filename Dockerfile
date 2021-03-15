@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y \
 	shellcheck \
 	yamllint \
 	sshuttle \
-	mercurial
+	mercurial \
+	lsb-release
 
 RUN curl https://bazel.build/bazel-release.pub.gpg | apt-key add - &&\
     echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list
@@ -214,6 +215,11 @@ RUN curl -L -o kubectl-cert-manager.tar.gz https://github.com/jetstack/cert-mana
     tar xzf kubectl-cert-manager.tar.gz &&\
     mv kubectl-cert_manager /usr/local/bin &&\
     rm -f kubectl-cert-manager.tar.gz
+
+# Add Azure CLI
+RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
+RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/azure-cli.list
+RUN apt-get update && apt-get install -y azure-cli
 
 # Add user to docker
 RUN usermod -aG docker user
