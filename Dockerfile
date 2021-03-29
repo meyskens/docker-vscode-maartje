@@ -1,5 +1,7 @@
 FROM meyskens/desktop-base:gtkdev
 
+RUN add-apt-repository ppa:git-core/ppa -y
+
 RUN apt-get update && apt-get install -y \
         curl \
 	apt-transport-https \
@@ -222,7 +224,7 @@ RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb
 RUN apt-get update && apt-get install -y azure-cli
 
 # Add golangci-lint
-curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b /usr/local/bin v1.38.0
+RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b /usr/local/bin v1.38.0
 
 # Add user to docker
 RUN usermod -aG docker user
