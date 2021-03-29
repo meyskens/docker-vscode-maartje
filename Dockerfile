@@ -1,7 +1,5 @@
 FROM meyskens/desktop-base:gtkdev
 
-RUN add-apt-repository ppa:git-core/ppa -y
-
 RUN apt-get update && apt-get install -y \
         curl \
 	apt-transport-https \
@@ -27,6 +25,9 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
     echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list
 
 RUN apt-get update && apt-get install -y code
+
+# Install upstream Git
+RUN add-apt-repository ppa:git-core/ppa -y && apt-get update && apt-get install -y git
 
 # Install GUI dev
 RUN apt-get install -y pkg-config libwebkit2gtk-4.0-dev libgtk-3-dev
