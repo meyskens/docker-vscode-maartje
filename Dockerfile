@@ -61,7 +61,7 @@ ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 ENV arduinoversion=1.8.5
 
 #Install node.js
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - &&\
+RUN curl -sL https://deb.nodesource.com/setup_15.x | bash - &&\
     apt-get install -y nodejs
 RUN sudo npm install -g eslint babel-eslint http-server babel-cli webpack nodemon yarn
 
