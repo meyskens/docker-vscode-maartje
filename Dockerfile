@@ -121,13 +121,7 @@ RUN wget https://github.com/openshift/origin/releases/download/v3.11.0/openshift
     mv openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit/oc /usr/local/bin/ && \
     rm -f openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz &&\
     rm -fr openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit
-# Install Helm
-RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.14.1-linux-amd64.tar.gz && \
-    tar xzf helm-v2.14.1-linux-amd64.tar.gz && \
-    mv linux-amd64/helm /usr/local/bin/helm2 && \
-    rm -f helm-v2.14.1-linux-amd64.tar.gz &&\
-    rm -fr linux-amd64
-    
+
 # Install Helm3
 RUN wget https://get.helm.sh/helm-v3.0.2-linux-amd64.tar.gz && \
     tar xzf helm-v3.0.2-linux-amd64.tar.gz && \
