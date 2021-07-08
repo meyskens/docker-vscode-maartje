@@ -231,4 +231,6 @@ RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/i
 # Add user to docker
 RUN usermod -aG docker user
 
-CMD sudo -u user code --verbose
+USER user
+
+CMD user code --verbose
