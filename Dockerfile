@@ -163,7 +163,8 @@ RUN wget https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_linux_
     
 RUN wget https://releases.hashicorp.com/terraform/0.13.6/terraform_0.13.6_linux_amd64.zip &&\
     unzip terraform_0.13.6_linux_amd64.zip &&\
-    mv terraform /usr/local/bin/terraform &&\
+    mv terraform /usr/local/bin/terraformnetworks:
+      - sat &&\
     rm terraform_0.13.6_linux_amd64.zip
     
 # Install packer
@@ -224,6 +225,12 @@ RUN curl -L -o kubectl-cert-manager.tar.gz https://github.com/jetstack/cert-mana
 RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
 RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/azure-cli.list
 RUN apt-get update && apt-get install -y azure-cli
+
+# Add Docker compose v2
+RUN wget https://github.com/docker/compose/releases/download/v2.0.1/docker-compose-linux-x86_64 &&\
+    chmod +x docker-compose-linux-x86_64 &&\
+    mkdir -p /usr/local/lib/docker/cli-plugins &&\
+    mv docker-compose-linux-x86_64 /usr/local/lib/docker/cli-plugins/docker-compose
 
 # Add golangci-lint
 RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b /usr/local/bin v1.38.0
