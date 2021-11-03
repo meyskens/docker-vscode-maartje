@@ -173,7 +173,7 @@ RUN wget https://releases.hashicorp.com/packer/1.4.3/packer_1.4.3_linux_amd64.zi
     rm packer_1.4.3_linux_amd64.zip
 
 # Install pip
-RUN apt-get install -y python-pip  python3-pip
+RUN apt-get install -y python3-pip
  
 # Install ansible
 RUN pip3 install ansible==2.7
