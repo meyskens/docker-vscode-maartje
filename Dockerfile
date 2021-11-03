@@ -1,4 +1,4 @@
-FROM meyskens/desktop-base:gtkdev
+FROM ghcr.io/meyskens/docker-desktop-base:gtkdev-e197d38e897bdc97cc489a0706334decf7621ede
 
 RUN apt-get update && apt-get install -y \
         curl \
