@@ -65,17 +65,12 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - &&\
     apt-get install -y nodejs
 RUN sudo npm install -g eslint babel-eslint http-server babel-cli webpack nodemon yarn
 
-#Install ionic
-RUN npm install -g cordova ionic
-
 #Install vue
 RUN npm install -g @vue/cli
 
 #Install twilio
 RUN npm install -g twilio-cli
 
-#Install ZOHO Widget SDK
-RUN npm install -g zoho-extension-toolkit
 #Install hugo
 RUN wget https://github.com/gohugoio/hugo/releases/download/v0.51/hugo_0.51_Linux-64bit.deb &&\
     dpkg -i hugo_0.51_Linux-64bit.deb  && rm -f /hugo_0.51_Linux-64bit.deb 
@@ -114,13 +109,6 @@ RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add 
     echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" >/etc/apt/sources.list.d/kubernetes.list && \
     apt-get update && \
     apt-get install -y kubectl
-
-# Install OpenShift
-RUN wget https://github.com/openshift/origin/releases/download/v3.11.0/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz && \
-    tar xzf openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz && \
-    mv openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit/oc /usr/local/bin/ && \
-    rm -f openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz &&\
-    rm -fr openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit
 
 # Install Helm3
 RUN wget https://get.helm.sh/helm-v3.0.2-linux-amd64.tar.gz && \
