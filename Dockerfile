@@ -52,7 +52,7 @@ RUN usermod -s /usr/bin/fish user
 
 #Install golang
 RUN apt-get update && apt-get install -y wget tar git
-RUN wget -O -  "https://go.dev/dl/go1.18.2.linux-amd64.tar.gz" | tar xzC /usr/local
+RUN wget -O -  "https://go.dev/dl/go1.19.linux-amd64.tar.gz" | tar xzC /usr/local
 RUN cp /usr/local/go/bin/* /usr/local/bin
 
 ENV GOPATH /home/user/go
@@ -151,8 +151,13 @@ RUN wget https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_linux_
     
 RUN wget https://releases.hashicorp.com/terraform/0.13.6/terraform_0.13.6_linux_amd64.zip &&\
     unzip terraform_0.13.6_linux_amd64.zip &&\
-    mv terraform /usr/local/bin/terraform &&\
+    mv terraform /usr/local/bin/tf013 &&\
     rm terraform_0.13.6_linux_amd64.zip
+   
+RUN wget https://releases.hashicorp.com/terraform/1.2.8/terraform_1.2.8_linux_amd64.zipp &&\
+    unzip terraform_1.2.8_linux_amd64.zip &&\
+    mv terraform /usr/local/bin/terraform &&\
+    rm terraform_1.2.8_linux_amd64.zip
     
 # Install packer
 RUN wget https://releases.hashicorp.com/packer/1.4.3/packer_1.4.3_linux_amd64.zip &&\
