@@ -154,7 +154,7 @@ RUN wget https://releases.hashicorp.com/terraform/0.13.6/terraform_0.13.6_linux_
     mv terraform /usr/local/bin/tf013 &&\
     rm terraform_0.13.6_linux_amd64.zip
    
-RUN wget https://releases.hashicorp.com/terraform/1.2.8/terraform_1.2.8_linux_amd64.zipp &&\
+RUN wget https://releases.hashicorp.com/terraform/1.2.8/terraform_1.2.8_linux_amd64.zip &&\
     unzip terraform_1.2.8_linux_amd64.zip &&\
     mv terraform /usr/local/bin/terraform &&\
     rm terraform_1.2.8_linux_amd64.zip
