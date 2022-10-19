@@ -111,10 +111,10 @@ RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add 
     apt-get install -y kubectl
 
 # Install Helm3
-RUN wget https://get.helm.sh/helm-v3.0.2-linux-amd64.tar.gz && \
-    tar xzf helm-v3.0.2-linux-amd64.tar.gz && \
+RUN wget https://get.helm.sh/helm-v3.10.0-linux-amd64.tar.gz && \
+    tar xzf helm-v3.10.0-linux-amd64.tar.gz && \
     mv linux-amd64/helm /usr/local/bin/helm && \
-    rm -f helm-v3.0.2-linux-amd64.tar.gz&&\
+    rm -f helm-v3.10.0-linux-amd64.tar.gz&&\
     rm -fr linux-amd64
 
 ENV CT_VERSION=2.3.3
