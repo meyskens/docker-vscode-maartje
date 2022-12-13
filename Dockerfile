@@ -238,4 +238,4 @@ RUN usermod -aG docker user
 
 USER user
 
-CMD [ "/bin/bash", "-c", "code; while [[ "$(pgrep code)" != "" ]]; do sleep 1;done;" ]
+CMD [ "/bin/bash", "-c", "code; while [[ \"$(pgrep code)\" != \"\" ]]; do sleep 1;done;" ]
