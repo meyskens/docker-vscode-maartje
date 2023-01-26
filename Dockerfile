@@ -50,9 +50,9 @@ RUN git clone https://github.com/git/git.git -b v2.31.1 &&\
 RUN apt-get install -y fish
 RUN usermod -s /usr/bin/fish user
 
-#Install golang
+#Install llang
 RUN apt-get update && apt-get install -y wget tar git
-RUN wget -O -  "https://go.dev/dl/go1.19.linux-amd64.tar.gz" | tar xzC /usr/local
+RUN wget -O -  "https://go.dev/dl/go1.20rc3.linux-amd64.tar.gz" | tar xzC /usr/local
 RUN cp /usr/local/go/bin/* /usr/local/bin
 
 ENV GOPATH /home/user/go
