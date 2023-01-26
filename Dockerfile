@@ -93,12 +93,6 @@ RUN ln -s /usr/bin/gcloud /usr/local/bin/gcloud
 RUN curl https://get.docker.com | bash
 RUN apt-get -y install docker-compose
 
-#Install Heroku
-RUN apt-get install -y software-properties-common && add-apt-repository -y "deb https://cli-assets.heroku.com/branches/stable/apt ./" &&\
-    curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add - &&\
-    apt-get update && apt-get install -y heroku 
-
-
 # Install arduino cli
 RUN wget -O arduino.tar.xz https://downloads.arduino.cc/arduino-${arduinoversion}-linux64.tar.xz && tar -xJf arduino.tar.xz && rm -f arduino.tar.xz
 
