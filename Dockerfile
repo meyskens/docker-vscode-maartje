@@ -52,7 +52,7 @@ RUN usermod -s /usr/bin/fish user
 
 #Install llang
 RUN apt-get update && apt-get install -y wget tar git
-RUN wget -O -  "https://go.dev/dl/go1.20rc3.linux-amd64.tar.gz" | tar xzC /usr/local
+RUN wget -O -  "https://go.dev/dl/go1.20.linux-amd64.tar.gz" | tar xzC /usr/local
 RUN cp /usr/local/go/bin/* /usr/local/bin
 
 ENV GOPATH /home/user/go
