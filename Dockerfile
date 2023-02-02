@@ -224,6 +224,13 @@ RUN wget https://github.com/docker/compose/releases/download/v2.0.1/docker-compo
     mkdir -p /usr/local/lib/docker/cli-plugins &&\
     mv docker-compose-linux-x86_64 /usr/local/lib/docker/cli-plugins/docker-compose
 
+# Add Docker buildx
+RUN wget https://github.com/docker/buildx/releases/download/v0.10.2/buildx-v0.10.2.linux-amd64 &&\
+    chmod +x buildx-v0.10.2.linux-amd64 &&\
+    mkdir -p /usr/local/lib/docker/cli-plugins &&\
+    mv buildx-v0.10.2.linux-amd64 /usr/local/lib/docker/cli-plugins/docker-buildx
+    
+
 # Add golangci-lint
 RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b /usr/local/bin v1.38.0
 
