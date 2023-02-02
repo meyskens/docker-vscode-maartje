@@ -122,7 +122,7 @@ RUN mkdir /ct && cd /ct && \
     cd / && rm -fr /ct
 
 # Install kind
-RUN curl -Lo ./kind https://github.com/kubernetes-sigs/kind/releases/download/v0.7.0/kind-linux-amd64 && \ 
+RUN curl -Lo ./kind https://github.com/kubernetes-sigs/kind/releases/download/v0.17.0/kind-linux-amd64 && \ 
     chmod +x ./kind && \
     mv ./kind /usr/bin/kind
 
