@@ -39,7 +39,7 @@ ENV EDITOR=nano
 
 # Install upstream Git
 RUN apt install -y make libssl-dev libghc-zlib-dev libcurl4-gnutls-dev libexpat1-dev gettext unzip
-RUN git clone https://github.com/git/git.git -b v2.31.1 &&\
+RUN git clone https://github.com/git/git.git -b v2.39.1 &&\
     cd git &&\
     make prefix=/usr/local all &&\
     sudo make prefix=/usr/local install &&\
