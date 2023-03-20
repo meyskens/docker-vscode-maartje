@@ -232,7 +232,6 @@ RUN wget https://github.com/docker/buildx/releases/download/v0.10.2/buildx-v0.10
     mkdir -p /usr/local/lib/docker/cli-plugins &&\
     mv buildx-v0.10.2.linux-amd64 /usr/local/lib/docker/cli-plugins/docker-buildx
     
-
 # Add golangci-lint
 RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b /usr/local/bin v1.38.0
 
@@ -242,7 +241,6 @@ RUN CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium
     sha256sum --check cilium-linux-amd64.tar.gz.sha256sum  &&\
     sudo tar xzvfC cilium-linux-amd64.tar.gz /usr/local/bin  &&\
     rm cilium-linux-amd64.tar.gz
-
 
 # Add user to docker
 RUN usermod -aG docker user
