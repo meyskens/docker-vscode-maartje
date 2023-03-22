@@ -242,6 +242,14 @@ RUN CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium
     sudo tar xzvfC cilium-linux-amd64.tar.gz /usr/local/bin  &&\
     rm cilium-linux-amd64.tar.gz
 
+# Add hubble CLI
+RUN export HUBBLE_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/hubble/master/stable.txt) &&\
+    curl -L --fail --remote-name-all https://github.com/cilium/hubble/releases/download/$HUBBLE_VERSION/hubble-linux-amd64.tar.gz{,.sha256sum}  &&\
+    sha256sum --check hubble-linux-amd64.tar.gz.sha256sum  &&\
+    sudo tar xzvfC hubble-linux-amd64.tar.gz /usr/local/bin  &&\
+    rm hubble-linux-amd64.tar.gz{,.sha256sum}
+
+
 # Add user to docker
 RUN usermod -aG docker user
 
