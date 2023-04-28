@@ -168,7 +168,10 @@ RUN apt-get install -y python3-pip
 RUN pip3 install ansible
 
 # Install AWS CLI
-RUN pip3 install awscli
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" &&\
+    unzip awscliv2.zip &&\
+    sudo ./aws/install &&\
+    rm -fr aws awscliv2.zip
 
 # Install protoc
 RUN PROTOC_ZIP=protoc-3.6.1-linux-x86_64.zip &&\
