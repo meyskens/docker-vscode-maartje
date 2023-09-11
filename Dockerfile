@@ -165,7 +165,7 @@ RUN wget https://releases.hashicorp.com/packer/1.4.3/packer_1.4.3_linux_amd64.zi
 RUN apt-get install -y python3-full python3-pip
  
 # Install ansible
-RUN pip3 install ansible
+#RUN pip3 install ansible
 
 # Install AWS CLI
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" &&\
