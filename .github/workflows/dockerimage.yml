@@ -13,7 +13,7 @@ jobs:
     - name: Configure Docker
       run: |
         echo '{"experimental":true}' | sudo tee /etc/docker/daemon.json
-        sudo service docker restart
+        sudo systemctl restart docker
     - name: Build the Docker image
       run: docker build . --squash --file Dockerfile --tag meyskens/vscode-maartje:latest
       env:
