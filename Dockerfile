@@ -217,12 +217,6 @@ RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor |
 RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/azure-cli.list
 RUN apt-get update && apt-get install -y azure-cli
 
-# Add OCI CLI
-
-RUN wget https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh &&\
-    bash install.sh --accept-all-defaults &&\
-    rm install.sh
-
 # Add Docker compose v2
 RUN wget https://github.com/docker/compose/releases/download/v2.0.1/docker-compose-linux-x86_64 &&\
     chmod +x docker-compose-linux-x86_64 &&\
